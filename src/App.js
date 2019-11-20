@@ -1,28 +1,17 @@
 import React from 'react';
-import PokemonIndex from './components/PokemonIndex'
-import logo from './logo.svg';
+import PokemonIndex from './containers/PokemonIndex'
 import './App.css';
+import NavBar from './components/NavBar'
+import { Route, withRouter } from 'react-router-dom';
+
 
 const App = () => {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <PokemonIndex/>
+      <NavBar/>
+      <Route exact path='/create-team' render={(routerProps) => <PokemonIndex {...routerProps} />} />  
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
