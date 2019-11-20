@@ -1,0 +1,80 @@
+.poke-collection {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  
+  .poke-card{
+    margin: 2rem !important;
+    width: 13rem !important;
+  }
+  
+  .create-team-page-bot{
+    position: sticky;
+    margin-top: 1rem;
+    /* height: 65vh; */
+    /* overflow: scroll; */
+    /* top: 15%; */
+  }
+  
+  .to-right{
+    float: right;
+    width: 60%;
+  }
+  
+  .create-team-page-top{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .filter-column{
+    padding-left: 1rem;
+    position: sticky;
+    top: 21%;
+    float: left;
+    width: 20%;
+    margin-right: 0 !important;
+  }
+  
+  .selected-poke-team {
+    overflow-x: scroll;
+    min-height: 300px;
+    max-width: 100%;
+  }
+  
+  .ui.grid > .row.selected-poke-team-row {
+    flex-wrap: nowrap;
+    min-height: 100%;
+    text-align: center;
+  }
+  
+  .ui.grid {
+    padding: 0px 20px;
+  }
+  
+  .chosen-poke{
+    border-radius: 50% !important;
+    height: 200px !important;
+    width: 200px !important;
+    min-width: 200px;
+    margin: auto !important;
+    color: black;
+    /* margin-top: 30px !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important; */
+  }
+  
+  .poke-team-container{
+    min-height: 100% !important;
+    display: block !important;
+    margin: 0px !important;
+  }
+  
+  .selected-poke-img{
+    margin-top: 1rem;
+  }
+  
+  .to-left{
+    text-align: left;
+  }
