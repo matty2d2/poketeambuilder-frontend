@@ -1,9 +1,19 @@
 .App {
   text-align: center;
   height: 100%;
+  max-width: 1200px;
+  background-color: white;
+  height: 100vh;
 }
-
-.App-logo {
+.site{
+ 
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  background-color: grey;
+  overflow: hidden;
+}
+/* .App-logo {
   height: 40vmin;
 }
 
@@ -20,10 +30,19 @@
 
 .App-link {
   color: #09d3ac;
+} */
+
+.poke-title {
+  top: 15%;
+  left: 25%;
+  width: 50%;
+  display: inline-block;
 }
 
-.poke-header {
-  top: 15%;
-  left: 45%;
-  color: red
+
+
+@media only screen and (max-width: 850px) {
+  body {
+    background-color: lightblue;
+  }
 }
