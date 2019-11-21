@@ -28,15 +28,14 @@ class PokemonCard extends React.Component {
     })
   }
 
-  showPokeName = (name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1)
-  }
+  showPokeName = (name) => name.charAt(0).toUpperCase() + name.slice(1)
 
   render() {
-    const {name, generation} = this.props
+    const {name, generation, id} = this.props
     //const hp = stats.find(stat => stat.name === 'hp')
+    // onClick={this.flipCard}
     return (
-        <Card onClick={this.flipCard} className='poke-card'>
+        <Card  className='poke-card' onDoubleClick={() => this.props.addToTeam(id)}> 
         <div>
           <div className="image">
             <img src={this.renderSprite()} alt="oh no!" />
