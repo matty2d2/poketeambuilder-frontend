@@ -19,10 +19,17 @@ const PokemonPage = () => {
     () => {
       fetch("http://localhost:3000/pokemon")
       .then(resp => resp.json())
-      .then(data => storePokemon(data.pokemon))
+      .then(data => storePokemon(data))
     },
     []
   )
+
+  // useEffect(
+  //   () => {
+  //     fetch("http://localhost:3000/stealdata")
+  //   },
+  //   []
+  // )
   
   const addPokeToTeam = (id) => addToTeam(id)
 

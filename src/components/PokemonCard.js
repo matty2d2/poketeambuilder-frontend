@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
+import '../Types.css'
 
 class PokemonCard extends React.Component {
   
@@ -13,7 +14,7 @@ class PokemonCard extends React.Component {
 
 
   renderSprite = () => {
-    const {back_sprite, front_sprite} = this.props
+    const {back_sprite, front_sprite} = this.props.pokemon
     if (this.state.flipped){
       return (back_sprite)?back_sprite: require(`../img/Missingno${this.randomNum(1,5)}.png`)//'https://vignette.wikia.nocookie.net/nintendo/images/8/85/MissingNoNormal.png/revision/latest?cb=20131114211037&path-prefix=en'
       // return back_sprite
@@ -30,11 +31,16 @@ class PokemonCard extends React.Component {
 
   showPokeName = (name) => name.charAt(0).toUpperCase() + name.slice(1)
 
+  showTypes = (array) => {
+    return array.map(type => <><div key={type.id} className={'type-icon' + ' ' + type.name}>{type.name}</div> &nbsp;</>)
+    }
+
   render() {
-    const {name, generation, id} = this.props
+    const {name, generation, id, types} = this.props.pokemon
     //const hp = stats.find(stat => stat.name === 'hp')
     // onClick={this.flipCard}
     return (
+    
         <Card  className='poke-card' onDoubleClick={() => this.props.addToTeam(id)}> 
         <div>
           <div className="image">
@@ -44,9 +50,8 @@ class PokemonCard extends React.Component {
             <div className="header">{this.showPokeName(name)}</div>
           </div>
           <div className="extra content">
-            <span>
-              <i className="icon heart red" />
-              Gen: {(generation)?generation:'HERREEEE'}
+            <span className='to-center'>
+              {this.showTypes(types)}
             </span>
           </div>
         </div>
