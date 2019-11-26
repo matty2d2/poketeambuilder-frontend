@@ -9,17 +9,17 @@ import FilterColumn from "./FilterColumn";
 import useSearch from '../hooks/useSearch'
 import usePokemonCollection from '../hooks/usePokemonCollection'
 import useChosenTeam from '../hooks/useChosenTeam'
+import API from "../helpers/API";
 
 const PokemonPage = () => {
-  const {pokemon, storePokemon} = usePokemonCollection()
+  const {pokemon, setPokemon} = usePokemonCollection()
   const {setSearch, filterPokemon} = useSearch()
-  const {chosenTeam, addToTeam, removeFromTeam} = useChosenTeam()
+  const {chosenTeam, addToTeam, removeFromTeam, resetTeam} = useChosenTeam()
 
   useEffect(
     () => {
-      fetch("http://localhost:3000/pokemon")
-      .then(resp => resp.json())
-      .then(data => storePokemon(data))
+      API.getPokemon()
+      .then(data => setPokemon(data))
     },
     []
   )
@@ -37,6 +37,10 @@ const PokemonPage = () => {
   
   const onSearchChange = (e, { value }) => setSearch(value)
 
+  const filterByGen = () => {
+
+  }
+
   const filteredPokemon = filterPokemon(pokemon)
 
   const pokemonTeam = () => {
@@ -50,7 +54,7 @@ const PokemonPage = () => {
   return (
     <>
       <div className="create-team-page-top">
-        <ChosenTeam team={pokemonTeam()} removeFromTeam={removePokeFromTeam}/>
+        <ChosenTeam team={pokemonTeam()} removeFromTeam={removePokeFromTeam} resetTeam={resetTeam} teamIds={chosenTeam}/>
       </div>
 
       <div className="create-team-page-bot">
