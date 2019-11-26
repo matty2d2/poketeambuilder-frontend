@@ -6,8 +6,9 @@
   .poke-card{
     margin: 2rem !important;
     width: 11rem !important;
+    z-index: 50 !important;
   }
-  
+
   .create-team-page-bot{
     /* position: sticky; */
     margin-top: 1rem;
@@ -25,8 +26,11 @@
     /* position: -webkit-sticky;
     position: sticky; */
     top: 9%;
-    z-index: 100;
+    z-index: 1000;
     opacity: 97%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
   
   .filter-column{
