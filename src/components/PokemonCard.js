@@ -32,7 +32,7 @@ class PokemonCard extends React.Component {
   showPokeName = (name) => name.charAt(0).toUpperCase() + name.slice(1)
 
   showTypes = (array) => {
-    return array.map(type => <><div key={type.id} className={'type-icon' + ' ' + type.name}>{type.name}</div> &nbsp;</>)
+    return array.map((type) => <><div className={'type-icon' + ' ' + type.name}>{type.name}</div> &nbsp;</>)
     }
 
   render() {
@@ -41,7 +41,7 @@ class PokemonCard extends React.Component {
     // onClick={this.flipCard}
     return (
     
-        <Card  className='poke-card' onDoubleClick={() => this.props.addToTeam(id)}> 
+        <Card  className='poke-card' onClick={() => this.props.addToTeam(id)}>
         <div>
           <div className="image">
             <img src={this.renderSprite()} alt="oh no!" />

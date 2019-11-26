@@ -1,24 +1,21 @@
-import React from "react";
-import { Form, Checkbox, Button } from "semantic-ui-react";
+import React, {useEffect} from "react";
 import './LogIn.css'
+import SignInForm from "../components/SignInForm";
+import SignUpForm from "../components/SignUpForm";
 
-const LogInPage = () => {
+const LogInPage = (props) => {
+
+  useEffect(
+    () => {
+      if (localStorage.getItem('token')) props.history.push('/create-team')
+    },
+    []
+  )
+
   return (
     <>
-      <div className='login-container'>
-        <h1>Log In</h1>
-        <Form>
-          <Form.Field>
-            <label>Username</label>
-            <input placeholder="First Name" />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder="Last Name" />
-          </Form.Field>
-          <Button type="submit">Log In</Button>
-        </Form>
-      </div>
+      <SignInForm {...props}/>
+      <SignUpForm {...props}/>
     </>
   );
 };

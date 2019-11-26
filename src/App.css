@@ -13,6 +13,28 @@
   background-color: grey;
   overflow: hidden;
 }
+
+.team-form-hidden{
+  width: 40%;
+  visibility: hidden;
+  /* position: absolute;
+  top: -50%;
+  left: 30%;
+  height: 0%; */
+}
+
+.team-form{
+  width: 40%;
+  left: 30%;
+  position: relative;
+  padding-bottom: 2px;
+  /* position: fixed;
+  top: 28%;
+  transition: 1.0s;
+  z-index: 50 !important;
+  background-color: black; */
+}
+
 /* .App-logo {
   height: 40vmin;
 }

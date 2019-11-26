@@ -14,7 +14,11 @@ const useChosenTeam = () => {
         setChosenTeam(newChosenTeam)
     }
 
-    return {chosenTeam, addToTeam, removeFromTeam}
+    const resetTeam = () => {
+        setChosenTeam([])
+    }
+
+    return {chosenTeam, addToTeam, removeFromTeam, resetTeam}
 }
 
 export default useChosenTeam

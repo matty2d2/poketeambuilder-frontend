@@ -4,7 +4,7 @@ import './NavBar.css'
 
 const NavBar = (props) =>
     <div className="navbar">
-
+        {props.user ?
         <div className='user-links left'>
             <NavLink
                 className='user-link'
@@ -21,20 +21,27 @@ const NavBar = (props) =>
                 activeStyle={{
                     color: 'gold'
                 }}
-            >My Teams</NavLink>
+            >{props.user}'s Teams</NavLink>
         </div>
+        :
+        null
+        }
 
+        {props.user ?
         <div className='user-links right'>
             <NavLink
                 className='user-link'
                 to="/log-in"
+                onClick={props.signOut}
                 exact
                 activeStyle={{
                     color: 'gold'
                 }}
             >Log Out</NavLink>
         </div>
-
+        :
+        null
+        }
         <div className='poke-title'>
             <a href="http://localhost:3001/create-team"><img className='head-image' src="https://fontmeme.com/permalink/191120/7b8d90738ab7c4dc15f1177511062b0f.png
             " alt=""/></a>
