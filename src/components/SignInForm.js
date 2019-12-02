@@ -32,11 +32,11 @@ class SignInForm extends React.Component {
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Username</label>
-              <input name='username' onChange={handleChange}/>
+              <input name='username' onChange={handleChange} required/>
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input name='password' type='password' onChange={handleChange}/>
+              <input name='password' type='password' onChange={handleChange} required/>
             </Form.Field>
             <Button type="submit">Log In</Button>
           </Form>

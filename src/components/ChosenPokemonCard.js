@@ -19,14 +19,14 @@ const ChosenPokemonCard = ({id, front_sprite, name, types, removeFromTeam}) => {
     }
 
     const showTypes = (array) => {
-        return array.map(type => <div key={type.id} className={'small-type-icon' + ' ' + type.name}>{type.name}</div>)
+        return array.map(type => <div key={type.id} className={'small-type-icon' + ' ' + type.name + ' ' + 'abbr'}>{type.name.substring(0, 3)}</div>)
     }
 
     return (
         <Card  
         className='chosen-poke' 
         color='red'
-        onDoubleClick={handleDoubleClick}
+        onClick={handleDoubleClick}
         >
             <div>
                 <img className='selected-poke-img'src={useImage(front_sprite)} alt="oh no!"/>

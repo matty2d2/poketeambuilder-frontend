@@ -13,10 +13,10 @@ const LogInPage = (props) => {
   )
 
   return (
-    <>
+    <div className='main-container'>
       <SignInForm {...props}/>
       <SignUpForm {...props}/>
-    </>
+    </div>
   );
 };
 

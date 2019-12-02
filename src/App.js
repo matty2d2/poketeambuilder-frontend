@@ -6,6 +6,7 @@ import { Route, withRouter } from 'react-router-dom';
 import LogInPage from './containers/LogInPage'
 import MyTeamsIndex from './containers/MyTeamsIndex'
 import API from "./helpers/API";
+import TypeChartsPage from './components/TypeChartsPage';
 
 class App extends React.Component{
 
@@ -54,7 +55,9 @@ class App extends React.Component{
         <NavBar user={username} signOut={signOut}/>
           <Route path='/create-team' render={(routerProps) => <PokemonIndex {...routerProps} />} />  
           <Route path='/log-in' render={(routerProps) => <LogInPage {...routerProps} signIn={signIn} />} /> 
-          <Route path='/my-teams' render={(routerProps) => <MyTeamsIndex {...routerProps} />} />   
+          <Route path='/my-teams' render={(routerProps) => <MyTeamsIndex {...routerProps} />} />
+          <Route path='/type-charts' render={(routerProps) => <TypeChartsPage {...routerProps}/>   } />   
+          
         </div>
       </div>
     );

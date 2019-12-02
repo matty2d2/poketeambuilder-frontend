@@ -10,11 +10,16 @@ import useSearch from '../hooks/useSearch'
 import usePokemonCollection from '../hooks/usePokemonCollection'
 import useChosenTeam from '../hooks/useChosenTeam'
 import API from "../helpers/API";
+import useGenFilter from "../hooks/useGenFilter";
+import useTypeFilter from "../hooks/useTypeFilter";
+
 
 const PokemonPage = () => {
   const {pokemon, setPokemon} = usePokemonCollection()
   const {setSearch, filterPokemon} = useSearch()
   const {chosenTeam, addToTeam, removeFromTeam, resetTeam} = useChosenTeam()
+  const {genFilter, setGenFilter} = useGenFilter()
+  const {typeFilter, setTypeFilter} = useTypeFilter()
 
   useEffect(
     () => {
@@ -37,15 +42,22 @@ const PokemonPage = () => {
   
   const onSearchChange = (e, { value }) => setSearch(value)
 
-  const filterByGen = () => {
-
+  const filterByGen = (array) => {
+    if (genFilter === 0) return array
+    return [...array].filter(poke=> poke.generation === genFilter)
   }
 
-  const filteredPokemon = filterPokemon(pokemon)
+  const filterByType = () => {
+    if (typeFilter === 0) return pokemon
+    
+    return [...pokemon].filter(poke=> poke.types.map(type=> type.id).includes(typeFilter))
+  }
+
+  const filteredPokemon = filterPokemon(filterByGen(filterByType()))
+  
 
   const pokemonTeam = () => {
     const team = chosenTeam.map(pokeId => {
-      if (pokeId === 0) return 0
       return [...pokemon].find(poke => poke.id === pokeId)
     })
     return team
@@ -65,7 +77,7 @@ const PokemonPage = () => {
             showNoResults={false}
           />
           <br/>
-          <FilterColumn/>
+          <FilterColumn setGenFilter={setGenFilter} setTypeFilter={setTypeFilter}/>
         </div>
 
         <div className="poke-collection">

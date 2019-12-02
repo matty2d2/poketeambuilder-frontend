@@ -6,6 +6,7 @@ const createUserUrl = baseUrl + 'create'
 const myTeamsUrl = baseUrl + 'user-teams'
 const makeTeamUrl = baseUrl + 'make-team'
 const deleteTeamUrl = baseUrl + 'delete-team'
+const updateTeamUrl = baseUrl + 'update-team'
 
 const get = url =>
   fetch(url, {
@@ -34,6 +35,15 @@ const post = (url, data) =>
       body: JSON.stringify(data)
     }).then(resp => resp.json())
 
+  const patch = (url, data) =>
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(resp => resp.json())
 
   const createUser = (username, password) => post(createUserUrl, { username, password })
 
@@ -49,6 +59,8 @@ const post = (url, data) =>
 
   const deleteTeam = (data) => deleteItem(deleteTeamUrl, data)
 
+  const updateTeamPokemon = (data) => patch(updateTeamUrl, data)
+
   export default {
     signIn,
     validates,
@@ -56,5 +68,6 @@ const post = (url, data) =>
     createUser,
     getTeams,
     makeTeam,
-    deleteTeam
+    deleteTeam,
+    updateTeamPokemon
   }
