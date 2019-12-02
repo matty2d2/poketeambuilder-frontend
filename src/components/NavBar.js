@@ -22,6 +22,14 @@ const NavBar = (props) =>
                     color: 'gold'
                 }}
             >{props.user}'s Teams</NavLink>
+            <NavLink
+                className='user-link'
+                to="/type-charts"
+                exact
+                activeStyle={{
+                    color: 'gold'
+                }}
+            >Type Charts</NavLink>
         </div>
         :
         null

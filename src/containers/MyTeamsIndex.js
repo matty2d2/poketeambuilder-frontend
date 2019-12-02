@@ -9,7 +9,7 @@ import DisplayCard from "../components/DiplayCard";
 
 const MyTeamsIndex = props => {
   const { selectedTeam, setSelectedTeam } = useSelectedTeam();
-  const { teams, setTeams, removeTeam } = useTeams();
+  const { teams, setTeams, removeTeam, updateStat } = useTeams();
   const { hidden, switchHidden } = useHidden();
 
   useEffect(() => {
@@ -26,13 +26,32 @@ const MyTeamsIndex = props => {
     if (teams.length === 0) {
       return "You have no Teams! Go to Create Team to make one.";
     } else {
-      return teams.map(team => (
-        <Card key={team.id} onClick={() => showTeamView(team.id)}>
-          <div>{team.name}</div>
-        </Card>
-      ));
+      return (
+        <div>
+        <h1>Teams</h1>
+        {teams.map(team => (
+        
+          <Card key={team.id} onClick={() => showTeamView(team.id)}>
+            <div>{team.name}</div>
+
+            <div className='icons-container'>
+            {team.team_pokemons.map(tp=>
+              <span className="image-icon">
+                <img src={tp.pokemon.front_sprite} alt="oh no!" />
+              </span>
+            )}
+            </div>
+            
+          </Card>
+        ))}
+        </div>
+      );
     }
   };
+
+  const changeStat = (teamId, pokemonId, stat, value) => {
+    updateStat(teamId, pokemonId, stat, value)
+  }
 
   const deleteTeam = (teamId) => {
     API.deleteTeam({team_id: teamId})
@@ -47,9 +66,10 @@ const MyTeamsIndex = props => {
     const team = teams.find(team => team.id === selectedTeam);
     return (
         <>
+        <h1 className='team-name'>{team.name}</h1>
         <Card.Group itemsPerRow={2} className='team-group'>
-            {team.pokemons.map((poke, idx) => (
-                <DisplayCard key={idx} poke={poke}/>
+            {team.team_pokemons.map((poke) => (
+                <DisplayCard key={poke.id} poke={poke} changeStat={changeStat}/>
             ))}
         </Card.Group>
         <div><Button onClick={() => deleteTeam(team.id)}>Delete this team</Button></div>
@@ -58,7 +78,7 @@ const MyTeamsIndex = props => {
     );
   };
 
-  return <div>{hidden ? renderTeamsView() : renderTeamDisplay()}</div>;
+  return <div className='team-container'>{hidden ? renderTeamsView() : renderTeamDisplay()}</div>;
 };
 
 export default MyTeamsIndex;

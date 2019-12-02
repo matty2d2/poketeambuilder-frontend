@@ -12,7 +12,7 @@
   .create-team-page-bot{
     /* position: sticky; */
     margin-top: 1rem;
-    height: 74vh;
+    height: 63vh;
     overflow: scroll;
     top: 15%;
   }
@@ -84,3 +84,21 @@
   .to-left{
     text-align: left;
   }
+
+  .team-name{
+    padding-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .team-container {
+    display: grid;
+    justify-content: center;
+}
+
+.image-icon img{
+  width: 15%;
+}
+
+.icons-container{
+  border-top: grey solid 1px;
+}

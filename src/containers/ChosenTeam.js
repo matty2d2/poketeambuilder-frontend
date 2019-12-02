@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ChosenPokemonCard from "../components/ChosenPokemonCard";
 import { Form, Button } from "semantic-ui-react";
 import API from "../helpers/API";
@@ -14,6 +14,11 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
 
     switchHidden();
   };
+
+  const toggleVal = () => {
+    if (teamIds.length === 6) return false;
+    return true
+  }
 
   const saveTeam = () => {
     if (teamIds.length !== 6) return;
@@ -55,7 +60,7 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
             </Form.Field>
           </Form>
         </div>
-        <Button onClick={handleClick}>Make Team</Button>
+        <Button onClick={handleClick} disabled={toggleVal()}>Make Team <i>(min 6)</i></Button>
       </div>
     </div>
   );

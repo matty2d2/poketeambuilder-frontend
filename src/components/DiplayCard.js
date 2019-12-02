@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
-import { Card } from "semantic-ui-react";
+import React from "react";
+import { Card, Form } from "semantic-ui-react";
 import useFlipped from "../hooks/useFlipped";
 import "./HealthBar.css";
 import "./DisplayCard.css";
+import useEditType from "../hooks/useEditType";
+import API from "../helpers/API";
 
-const DisplayCard = ({ poke }) => {
+const DisplayCard = ({ poke, changeStat }) => {
   const { flipped, toggleFlipped } = useFlipped();
+  const {editType, setEditType} = useEditType()
 
   const renderSprite = poke => {
-    const { back_sprite, front_sprite } = poke;
+    const { back_sprite, front_sprite } = poke.pokemon;
     if (flipped) {
       return back_sprite
         ? back_sprite
@@ -28,18 +31,74 @@ const DisplayCard = ({ poke }) => {
     ));
   };
 
+  const handleDoubleClick = (stat) => {
+    setEditType(stat)
+  }
+
+  const validateField = (val) =>{
+
+      // If x is Not a Number or less than one
+      if (isNaN(val) || val < 1) {
+        return false
+      } else {
+        return true
+      }
+  }
+
+  const updateStat = (stat, val) => {
+    const newStatData = {
+      id: poke.id,
+      stat: stat,
+      value: val
+    }
+    API.updateTeamPokemon(newStatData)
+      .then(()=> changeStat(poke.team_id, poke.id, stat, val))
+  }
+
+  const handleSubmit = (e, stat) => {
+    e.preventDefault();
+    const value = e.target[stat].value
+    if (validateField(value)){
+      updateStat(stat, value)
+    }
+    
+    return setEditType(undefined)
+  }
+
+  const handleBlur = () => {
+    return setEditType(undefined)
+  }
+
+  const showStatOrEdit = (stat) => {  
+    if (stat === editType) {
+      return (
+        <span>
+        <form  onSubmit={(e)=>handleSubmit(e, stat)} onBlur={handleBlur}>
+          <input className='stat-input' name={`${stat}`} autoFocus/>
+        </form>
+        </span>
+        // <Form onSubmit={(e)=>handleSubmit(e, stat)} onBlur={handleBlur}>
+        //     <Form.Field>
+        //       <input className='stat-input' name={`${stat}`} autoFocus/>
+        //     </Form.Field>
+        //   </Form>
+      )
+    }
+    return poke[stat]
+  }
+
   return (
     <>
-      <Card className="display-card" onClick={() => toggleFlipped()}>
+      <Card className="display-card">
         <div>
-          <div className="image">
+          <div className="image" onClick={() => toggleFlipped()}>
             <img src={renderSprite(poke)} alt="oh no!" />
           </div>
           <div className="content">
             <div className="header">{showPokeName(poke.name)}</div>
           </div>
           <div className="extra content">
-            <span className="to-center">{showTypes(poke.types)}</span>
+            <span className="to-center">{showTypes(poke.pokemon.types)}</span>
           </div>
         </div>
       </Card>
@@ -52,21 +111,21 @@ const DisplayCard = ({ poke }) => {
             <div className="hp"><strong>:L6</strong></div> <br/>
               <div className='hp-container'>
                 <span className='hp-text'><strong>HP:</strong></span>
-                <div class="health-bar">
-                  <div class="health-bar-glass">
-                    <div class="health-bar-fluid"></div>
+                <div className="health-bar">
+                  <div className="health-bar-glass">
+                    <div className="health-bar-fluid"></div>
                   </div>
                 </div>
               </div>
               
-            <div className="hp"><strong>{poke.base_hp}/ &nbsp; {poke.base_hp}</strong></div>
+            <div className="hp"><strong>{poke.hp}/ <span onDoubleClick={()=>handleDoubleClick('hp')}>{showStatOrEdit('hp')}</span></strong></div>
             <br/>
             <div className='stats'>
-                <div className='stat'> SPEED: <strong>{poke.base_speed}</strong> </div>
-                <div className='stat'> SPECIAL DEFENCE: <strong>{poke.base_special_defence}</strong></div>
-                <div className='stat'> SPECIAL ATTACK: <strong>{poke.base_special_attack}</strong></div>
-                <div className='stat'> DEFENCE: <strong>{poke.base_defence}</strong> </div>
-                <div className='stat'> ATTACK: <strong>{poke.base_attack}</strong> </div>
+                <div className='stat'> SPEED: <strong onDoubleClick={()=>handleDoubleClick('speed')}>{showStatOrEdit('speed')}</strong> </div>
+                <div className='stat'> SPECIAL DEFENCE: <strong onDoubleClick={()=>handleDoubleClick('special_def')}>{showStatOrEdit('special_def')}</strong></div>
+                <div className='stat'> SPECIAL ATTACK: <strong onDoubleClick={()=>handleDoubleClick('special_atk')}>{showStatOrEdit('special_atk')}</strong></div>
+                <div className='stat'> DEFENCE: <strong onDoubleClick={()=>handleDoubleClick('defence')}>{showStatOrEdit('defence')}</strong> </div>
+                <div className='stat'> ATTACK: <strong onDoubleClick={()=>handleDoubleClick('attack')}>{showStatOrEdit('attack')}</strong> </div>
             </div>
             
             </div>
