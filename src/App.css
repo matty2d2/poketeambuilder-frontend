@@ -1,9 +1,10 @@
 .App {
   text-align: center;
-  height: 100%;
   max-width: 1200px;
+  width: 100%;
   background-color: white;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 .site{
  
@@ -11,7 +12,7 @@
   justify-content: center;
   display: flex;
   background-color: grey;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .team-form-hidden{
@@ -57,13 +58,14 @@
 .poke-title {
   top: 15%;
   left: 25%;
-  width: 50%;
+  width: 30%;
+  max-width: 400px;
   display: inline-block;
 }
 
 
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 900px) {
   body {
     background-color: lightblue;
   }
