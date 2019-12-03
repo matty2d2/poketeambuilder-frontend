@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Card, Form } from "semantic-ui-react";
 import useFlipped from "../hooks/useFlipped";
 import "./HealthBar.css";
@@ -26,10 +27,19 @@ const DisplayCard = ({ poke, changeStat }) => {
   const showTypes = array => {
     return array.map(type => (
       <>
-        <div className={"type-icon" + " " + type.name}>{type.name}</div> &nbsp;
+        <Link 
+          to={{
+            pathname: '/types',
+            state: {type: type.name}
+          }}
+        >
+          <div className={"type-icon" + " " + type.name + ' space'}>{type.name}</div>
+        </Link>
+        
       </>
     ));
   };
+
 
   const handleDoubleClick = (stat) => {
     setEditType(stat)
@@ -97,7 +107,7 @@ const DisplayCard = ({ poke, changeStat }) => {
           <div className="content">
             <div className="header">{showPokeName(poke.name)}</div>
           </div>
-          <div className="extra content">
+          <div className="types-content">
             <span className="to-center">{showTypes(poke.pokemon.types)}</span>
           </div>
         </div>

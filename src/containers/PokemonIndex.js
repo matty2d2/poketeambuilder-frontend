@@ -28,13 +28,6 @@ const PokemonPage = () => {
     },
     []
   )
-
-  // useEffect(
-  //   () => {
-  //     fetch("http://localhost:3000/stealdata")
-  //   },
-  //   []
-  // )
   
   const addPokeToTeam = (id) => addToTeam(id)
 

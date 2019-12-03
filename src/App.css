@@ -17,7 +17,8 @@
 
 .team-form-hidden{
   width: 40%;
-  visibility: hidden;
+  /* visibility: none; */
+  display: none;
   /* position: absolute;
   top: -50%;
   left: 30%;

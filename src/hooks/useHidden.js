@@ -5,7 +5,7 @@ const useHidden = () => {
 
     const switchHidden = () => setHidden(!hidden)
 
-    return {hidden, switchHidden}
+    return {hidden, switchHidden, setHidden}
 }
 
 export default useHidden

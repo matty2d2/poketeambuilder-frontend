@@ -7,6 +7,7 @@ const myTeamsUrl = baseUrl + 'user-teams'
 const makeTeamUrl = baseUrl + 'make-team'
 const deleteTeamUrl = baseUrl + 'delete-team'
 const updateTeamUrl = baseUrl + 'update-team'
+const typesUrl = baseUrl + 'types/'
 
 const get = url =>
   fetch(url, {
@@ -61,6 +62,8 @@ const post = (url, data) =>
 
   const updateTeamPokemon = (data) => patch(updateTeamUrl, data)
 
+  const getTypeData = (type) => get(typesUrl + type)
+
   export default {
     signIn,
     validates,
@@ -69,5 +72,6 @@ const post = (url, data) =>
     getTeams,
     makeTeam,
     deleteTeam,
-    updateTeamPokemon
+    updateTeamPokemon,
+    getTypeData
   }
