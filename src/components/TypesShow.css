@@ -1,0 +1,123 @@
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.moves-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    max-height: 83vh;
+    overflow: scroll;
+    min-width: 25%;
+}
+
+.pokes-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+    max-width: 490px;
+    flex-wrap: wrap;
+    max-height: 83vh;
+    overflow: scroll;
+}
+
+.chart-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+    max-width: 450px;
+}
+
+.poke-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.moves-show{
+    min-width: 25%;
+}
+
+.pokemon-show{
+    min-width: 40%;
+}
+
+.move-card{
+    width: 260px;
+}
+
+.poke-card{
+    width: 150px !important;
+    margin: 5px !important;
+}
+
+.poke-types{
+    display: grid inline-grid;
+    /* text-align: center; */
+}
+
+.space{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.dmg-icon{
+    width: fit-content;
+    margin: 5px;
+}
+
+.move-desc{
+    width: fit-content;
+}
+
+.type-chart{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.power-types{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.my-column{
+    width: 150px;
+    border: black solid 1px;
+    border-radius: 5%;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 5px 0px;
+}
+
+.power-lvl{
+    font-family: Copperplate;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 2px 0px;
+}
+
+.mini-column{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.two-times{
+    background: #009900;
+}
+
+.half-times{
+    background: #ff0000;
+}
+
+.zero-times{
+    background: #000000;
+}
