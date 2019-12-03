@@ -32,7 +32,7 @@ class PokemonCard extends React.Component {
   showPokeName = (name) => name.charAt(0).toUpperCase() + name.slice(1)
 
   showTypes = (array) => {
-    return array.map((type) => <><div className={'type-icon' + ' ' + type.name}>{type.name}</div> &nbsp;</>)
+    return array.map((type) => <div className={'type-icon' + ' ' + type.name + ' aligned'}>{type.name}</div>)
     }
 
   render() {
@@ -49,10 +49,10 @@ class PokemonCard extends React.Component {
           <div className="content">
             <div className="header">{this.showPokeName(name)}</div>
           </div>
-          <div className="extra content">
-            <span className='to-center'>
+          <div className="spaced">
+            <div className='to-center'>
               {this.showTypes(types)}
-            </span>
+            </div>
           </div>
         </div>
       </Card>

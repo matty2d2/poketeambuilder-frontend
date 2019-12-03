@@ -20,9 +20,10 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
     return true
   }
 
-  const saveTeam = () => {
+  const saveTeam = (e) => {
     if (teamIds.length !== 6) return;
 
+    e.target.form.reset()
     const data = {pokemon_array: teamIds, name: username}
     API.makeTeam(data).then(resetTeam).then(switchHidden);
   };
@@ -60,7 +61,11 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
             </Form.Field>
           </Form>
         </div>
+
+        <div className='make-button'>
         <Button onClick={handleClick} disabled={toggleVal()}>Make Team <i>(min 6)</i></Button>
+        </div>
+        
       </div>
     </div>
   );

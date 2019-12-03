@@ -7,6 +7,7 @@ import LogInPage from './containers/LogInPage'
 import MyTeamsIndex from './containers/MyTeamsIndex'
 import API from "./helpers/API";
 import TypeChartsPage from './components/TypeChartsPage';
+import TypeShow from './components/TypeShow';
 
 class App extends React.Component{
 
@@ -57,7 +58,7 @@ class App extends React.Component{
           <Route path='/log-in' render={(routerProps) => <LogInPage {...routerProps} signIn={signIn} />} /> 
           <Route path='/my-teams' render={(routerProps) => <MyTeamsIndex {...routerProps} />} />
           <Route path='/type-charts' render={(routerProps) => <TypeChartsPage {...routerProps}/>   } />   
-          
+          <Route path='/types' render={(routerProps) => <TypeShow {...routerProps}/> } /> 
         </div>
       </div>
     );

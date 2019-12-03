@@ -11,7 +11,7 @@ const NavBar = (props) =>
                 to="/create-team"
                 exact
                 activeStyle={{
-                    color: 'gold'
+                    color: 'red'
                 }}
             >Create Team</NavLink>
             <NavLink
@@ -19,7 +19,7 @@ const NavBar = (props) =>
                 to="/my-teams"
                 exact
                 activeStyle={{
-                    color: 'gold'
+                    color: 'red'
                 }}
             >{props.user}'s Teams</NavLink>
             <NavLink
@@ -27,7 +27,7 @@ const NavBar = (props) =>
                 to="/type-charts"
                 exact
                 activeStyle={{
-                    color: 'gold'
+                    color: 'red'
                 }}
             >Type Charts</NavLink>
         </div>
@@ -43,7 +43,7 @@ const NavBar = (props) =>
                 onClick={props.signOut}
                 exact
                 activeStyle={{
-                    color: 'gold'
+                    color: 'red'
                 }}
             >Log Out</NavLink>
         </div>
