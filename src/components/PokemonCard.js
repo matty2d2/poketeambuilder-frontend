@@ -17,7 +17,6 @@ class PokemonCard extends React.Component {
     const {back_sprite, front_sprite} = this.props.pokemon
     if (this.state.flipped){
       return (back_sprite)?back_sprite: require(`../img/Missingno${this.randomNum(1,5)}.png`)//'https://vignette.wikia.nocookie.net/nintendo/images/8/85/MissingNoNormal.png/revision/latest?cb=20131114211037&path-prefix=en'
-      // return back_sprite
       
     }
     return front_sprite
@@ -36,9 +35,7 @@ class PokemonCard extends React.Component {
     }
 
   render() {
-    const {name, generation, id, types} = this.props.pokemon
-    //const hp = stats.find(stat => stat.name === 'hp')
-    // onClick={this.flipCard}
+    const {name, id, types} = this.props.pokemon
     return (
     
         <Card  className='poke-card' onClick={() => this.props.addToTeam(id)}>

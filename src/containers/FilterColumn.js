@@ -151,9 +151,9 @@ const FilterColumn = (props) => {
     return (
       <>
         <h3>Generation</h3>
-        <Dropdown selection options={genOptions} defaultValue={0} onChange={handleGenChange}/>
+        <Dropdown selection options={genOptions} defaultValue={0} onChange={handleGenChange} upward={false}/>
         <h3>Type</h3>
-        <Dropdown selection options={typeOptions} defaultValue={0} onChange={handleTypeChange} upward={false}/>
+        <Dropdown selection options={typeOptions} defaultValue={0} onChange={handleTypeChange} upward={true}/>
       </>
     );
 }

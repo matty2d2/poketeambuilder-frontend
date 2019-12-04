@@ -24,12 +24,12 @@ const MyTeamsIndex = props => {
 
   const renderTeams = () => {
     return teams.map(team => (
-      <Card className={checkSelected(team)} color={(team.id===selectedTeam)?'blue':'white'} key={team.id} onClick={() => showTeamView(team.id)}>
+      <Card className={checkSelected(team)} color={(team.id===selectedTeam)?'blue':null} key={team.id} onClick={() => showTeamView(team.id)}>
         <div>{team.name}</div>
 
         <div className='icons-container'>
         {team.team_pokemons.map(tp=>
-          <span className="image-icon">
+          <span className="image-icon" key={tp.id}>
             <img src={tp.pokemon.front_sprite} alt="oh no!" />
           </span>
         )}
@@ -49,10 +49,12 @@ const MyTeamsIndex = props => {
       return "You have no Teams! Go to Create Team to make one.";
     } else {
       return (
-        <div>
-        <h1>Teams</h1>
-        {renderTeams()}
-        </div>
+        <>
+          <h1>Teams</h1>
+          <div className='home-teams'>
+            {renderTeams()}
+          </div>
+        </>
       );
     }
   };

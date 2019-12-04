@@ -31,7 +31,7 @@ const ChosenPokemonCard = ({id, front_sprite, name, types, removeFromTeam}) => {
             <div>
                 <img className='selected-poke-img'src={useImage(front_sprite)} alt="oh no!"/>
             </div>
-            <div>{(name)? showPokeName(name): '?'}</div>
+            <div>{(name)? showPokeName(name): ''}</div>
             <span>{(types)? showTypes(types): ''}</span>
       </Card>
         

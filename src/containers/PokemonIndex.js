@@ -23,10 +23,11 @@ const PokemonPage = () => {
 
   useEffect(
     () => {
+      if (pokemon.length === 721) return
       API.getPokemon()
       .then(data => setPokemon(data))
     },
-    []
+    [pokemon]
   )
   
   const addPokeToTeam = (id) => addToTeam(id)

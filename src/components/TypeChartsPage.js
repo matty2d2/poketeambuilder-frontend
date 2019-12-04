@@ -16,7 +16,7 @@ const TypeChartsPage = props => {
     const renderCharts = () => {
         return Object.keys(Types).map(type => 
             <>
-            <div className='chart-container'>
+            <div className='chart-container-x'>
                 <img className='chart-image' src={require(`../img/type-charts/` + Types[type] + `-types.png`)} alt=""/>
             </div>
             <br/>
@@ -542,10 +542,14 @@ const TypeChartsPage = props => {
 
         </div>
 
-        <div className='charts-container'>
+        <div>
             <h1>Dual Type Chart</h1>
+            <div className='charts-container'>
+            
             {renderCharts()}
         </div>
+        </div>
+        
        </>
         
     )

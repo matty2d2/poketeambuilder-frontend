@@ -37,6 +37,10 @@
     transition: opacity .4s;
 }
 
+.type-icon:hover{
+    box-shadow: 1px 1px black;
+}
+
 .large-type-icon {
     margin-top: 2rem;
     display: inline-block;
