@@ -23,9 +23,10 @@
   .create-team-page-bot{
     /* position: sticky; */
     margin-top: 1rem;
-    height: 63vh;
-    overflow: scroll;
+    height: 71vh;
+    overflow-y: scroll;
     top: 15%;
+
   }
   
   .to-right{
@@ -37,7 +38,7 @@
     /* position: -webkit-sticky;
     position: sticky; */
     top: 9%;
-    z-index: 1000;
+    z-index: 100;
     opacity: 97%;
     justify-content: center;
     display: flex;
@@ -48,6 +49,7 @@
     padding-left: 1rem;
     position: sticky;
     top: 0%;
+    z-index: 150;
     float: left;
     width: 220px;
     margin-right: 0 !important;
@@ -124,10 +126,15 @@
 
 .team-cards{
   margin: 5px !important;
-  min-width: 400px !important;
+  min-width: 390px !important;
   height: 90px;
 }
 
 .the-selected{
   background-color: azure !important;
+}
+
+.collection-scroll{
+  /* overflow: scroll; */
+  justify-content: center;
 }

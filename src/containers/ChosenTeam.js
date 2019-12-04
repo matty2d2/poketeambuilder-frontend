@@ -6,14 +6,32 @@ import useHidden from "../hooks/useHidden";
 import useUsername from "../hooks/useUsername";
 
 const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
-  const { hidden, switchHidden } = useHidden();
+  const { hidden, switchHidden, setHidden } = useHidden();
   const {username, setUsername} = useUsername();
   
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (teamIds.length !== 6) return;
 
-    switchHidden();
+    if (hidden === false){
+      // const form = document.getElementById('create-team-form')
+      // debugger
+      // form.submit()
+      switchHidden();
+    }else{
+      switchHidden();
+    } 
   };
+
+  useEffect(
+    ()=> {
+      if (teamIds === 6){
+        return setHidden(false)
+      }else {
+        return setHidden(true)
+      }
+    },
+    [teamIds, setHidden]
+  )
 
   const toggleVal = () => {
     if (teamIds.length === 6) return false;
@@ -21,9 +39,11 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
   }
 
   const saveTeam = (e) => {
+    e.preventDefault();
     if (teamIds.length !== 6) return;
 
-    e.target.form.reset()
+    e.target.reset()
+
     const data = {pokemon_array: teamIds, name: username}
     API.makeTeam(data).then(resetTeam).then(switchHidden);
   };
@@ -53,17 +73,18 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
         </div>
 
         <div className={showInput()}>
-          <Form>
+          <Form autoComplete='off' onSubmit={saveTeam} id='create-team-form'>
             <Form.Field>
               <label>Team Name</label>
-              <input name="username" onChange={handleChange}/>
-              <Button onClick={saveTeam}>Save</Button>
+              <input required={true} name="username" onChange={handleChange}/>
+              {/* <Button onClick={saveTeam}>Save</Button> */}
+              {/* <input type="submit" id="submit-form" class="hidden" /> */}
             </Form.Field>
           </Form>
         </div>
 
         <div className='make-button'>
-        <Button onClick={handleClick} disabled={toggleVal()}>Make Team <i>(min 6)</i></Button>
+          <Button onClick={handleClick} disabled={toggleVal()}>Make Team <i>(min 6)</i></Button>
         </div>
         
       </div>

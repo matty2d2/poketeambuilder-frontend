@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Card, Form } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import useFlipped from "../hooks/useFlipped";
 import "./HealthBar.css";
 import "./DisplayCard.css";
@@ -26,17 +26,15 @@ const DisplayCard = ({ poke, changeStat }) => {
 
   const showTypes = array => {
     return array.map(type => (
-      <>
         <Link 
           to={{
             pathname: '/types',
             state: {type: type.name}
           }}
+          key={type.name}
         >
           <div className={"type-icon" + " " + type.name + ' space'}>{type.name}</div>
         </Link>
-        
-      </>
     ));
   };
 
@@ -83,15 +81,10 @@ const DisplayCard = ({ poke, changeStat }) => {
     if (stat === editType) {
       return (
         <span>
-        <form  onSubmit={(e)=>handleSubmit(e, stat)} onBlur={handleBlur}>
-          <input className='stat-input' name={`${stat}`} autoFocus/>
-        </form>
+          <form autoComplete='off' onSubmit={(e)=>handleSubmit(e, stat)} onBlur={handleBlur}>
+            <input className='stat-input' name={`${stat}`} autoFocus/>
+          </form>
         </span>
-        // <Form onSubmit={(e)=>handleSubmit(e, stat)} onBlur={handleBlur}>
-        //     <Form.Field>
-        //       <input className='stat-input' name={`${stat}`} autoFocus/>
-        //     </Form.Field>
-        //   </Form>
       )
     }
     return poke[stat]
@@ -101,7 +94,7 @@ const DisplayCard = ({ poke, changeStat }) => {
     <>
       <Card className="display-card">
         <div>
-          <div className="image" onClick={() => toggleFlipped()}>
+          <div className="image sprite" onClick={() => toggleFlipped()}>
             <img src={renderSprite(poke)} alt="oh no!" />
           </div>
           <div className="content">
@@ -119,23 +112,26 @@ const DisplayCard = ({ poke, changeStat }) => {
 
               
             <div className="hp"><strong>:L6</strong></div> <br/>
+
+            <div className='hp-element' onClick={()=>handleDoubleClick('hp')}>
               <div className='hp-container'>
-                <span className='hp-text'><strong>HP:</strong></span>
+                <span className='hp-text' onClick={()=>handleDoubleClick('hp')}><strong>HP:</strong></span>
                 <div className="health-bar">
                   <div className="health-bar-glass">
                     <div className="health-bar-fluid"></div>
                   </div>
                 </div>
               </div>
-              
-            <div className="hp"><strong>{poke.hp}/ <span onDoubleClick={()=>handleDoubleClick('hp')}>{showStatOrEdit('hp')}</span></strong></div>
+              <div className="hp"><strong>{poke.hp}/ <span>{showStatOrEdit('hp')}</span></strong></div>
+            </div>
+
             <br/>
             <div className='stats'>
-                <div className='stat'> SPEED: <strong onDoubleClick={()=>handleDoubleClick('speed')}>{showStatOrEdit('speed')}</strong> </div>
-                <div className='stat'> SPECIAL DEFENCE: <strong onDoubleClick={()=>handleDoubleClick('special_def')}>{showStatOrEdit('special_def')}</strong></div>
-                <div className='stat'> SPECIAL ATTACK: <strong onDoubleClick={()=>handleDoubleClick('special_atk')}>{showStatOrEdit('special_atk')}</strong></div>
-                <div className='stat'> DEFENCE: <strong onDoubleClick={()=>handleDoubleClick('defence')}>{showStatOrEdit('defence')}</strong> </div>
-                <div className='stat'> ATTACK: <strong onDoubleClick={()=>handleDoubleClick('attack')}>{showStatOrEdit('attack')}</strong> </div>
+                <div className='stat' onClick={()=>handleDoubleClick('speed')}> SPEED: <strong >{showStatOrEdit('speed')}</strong> </div>
+                <div className='stat' onClick={()=>handleDoubleClick('special_def')}> SPECIAL DEFENCE: <strong >{showStatOrEdit('special_def')}</strong></div>
+                <div className='stat' onClick={()=>handleDoubleClick('special_atk')}> SPECIAL ATTACK: <strong >{showStatOrEdit('special_atk')}</strong></div>
+                <div className='stat' onClick={()=>handleDoubleClick('defence')}> DEFENCE: <strong >{showStatOrEdit('defence')}</strong> </div>
+                <div className='stat' onClick={()=>handleDoubleClick('attack')}> ATTACK: <strong >{showStatOrEdit('attack')}</strong> </div>
             </div>
             
             </div>

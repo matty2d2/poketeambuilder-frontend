@@ -13,9 +13,17 @@
     padding-left: 3px;
     padding-top: 2px;
     padding-bottom: 2px;
-    max-height: 83vh;
-    overflow: scroll;
+    max-height: 73vh;
+    overflow-y: scroll;
     min-width: 25%;
+    border: black 0.5px dotted;
+    border-radius: 5px;
+}
+
+.moves-container::-webkit-scrollbar{
+width: 0;
+height: 0;
+background: rgb(255,255,255);
 }
 
 .pokes-container{
@@ -24,15 +32,17 @@
     margin-left: 1rem;
     max-width: 490px;
     flex-wrap: wrap;
-    max-height: 83vh;
-    overflow: scroll;
+    max-height: 82.5vh;
+    overflow-y: scroll;
 }
 
 .chart-container{
     display: flex;
     flex-direction: row;
     margin-left: 1rem;
+    width: 300px;
     max-width: 450px;
+    justify-content: center;
 }
 
 .poke-container{
@@ -79,30 +89,35 @@
 
 .type-chart{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: column;
+    /* width: 160px; */
 }
 
 .power-types{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 10% repeat(3, auto);
+    height: fit-content;
 }
 
 .my-column{
-    width: 150px;
+    width: 180px;
+    background-color: azure;
     border: black solid 1px;
-    border-radius: 5%;
-    margin-left: 4px;
-    margin-right: 4px;
-    padding: 5px 0px;
+    border-radius: 10px;
+    margin: 4px;
+    /* margin-left: 4px;
+    margin-right: 4px; */
+    padding-top: 5px;
+    padding-bottom: 15px;
+    height: fit-content;
 }
 
 .power-lvl{
+    grid-area: 1 / 1 / span 1 / span 1;
     font-family: Copperplate;
     font-size: 24px;
-    color: #ffffff;
-    margin: 2px 0px;
+    width: 50%;
+    width: 100%;
 }
 
 .mini-column{
@@ -111,13 +126,43 @@
 }
 
 .two-times{
+    color: #ffffff;
     background: #009900;
 }
 
 .half-times{
+    color: #ffffff;
     background: #ff0000;
 }
 
 .zero-times{
+    color: #ffffff;
     background: #000000;
+}
+
+.power-atr {
+    grid-area: 1 / 2 / span 1/ span 1;
+    padding-top: 5px;
+}
+
+.description-header p {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+
+.description-header :first-child {
+    float: left;
+}
+
+.description-header :last-child {
+    float: right;
+}
+
+.type-comparison-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2px 0px;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
 }

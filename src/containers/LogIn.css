@@ -8,10 +8,13 @@
     border-color: black;
     border-width: 1px;
     border-style: solid;
-    border-radius: 10%;
+    border-radius: 25px;
 }
 
 .main-container{
-    display: grid;
-    justify-items: center;
+    /* display: grid;
+    justify-items: center; */
+
+    display: flex;
+    justify-content: center;
 }

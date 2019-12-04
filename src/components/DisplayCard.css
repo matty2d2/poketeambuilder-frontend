@@ -65,12 +65,26 @@
   .space{
     margin-left: 2px;
     margin-right: 2px;
-}
+  }
 
-.types-content{
-  display: flex;
-  justify-content: center;
-}
+  .types-content{
+    display: flex;
+    justify-content: center;
+  }
+
+  .stat:hover{
+    color: red;
+    cursor: pointer;
+  }
+
+  .hp-element:hover{
+    color: red;
+    cursor: pointer;
+  }
+
+  .sprite{
+    cursor: alias;
+  }
 
   @media only screen and (max-width: 1080px) {
     .team-group{
