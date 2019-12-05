@@ -146,3 +146,7 @@
   /* overflow: scroll; */
   justify-content: center;
 }
+
+.team-add:hover{
+  cursor: copy;
+}
