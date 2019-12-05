@@ -57,7 +57,7 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
 
   return (
     <div>
-      <div className="ui segment inverted red selected-poke-team">
+      <div className="ui segment inverted selected-poke-team">
         <div className="ui six column grid poke-team-container">
           <div className="row selected-poke-team-row">
             {Array(6)

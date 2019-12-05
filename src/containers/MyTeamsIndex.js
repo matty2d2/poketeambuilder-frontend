@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
 import { Card, Button } from "semantic-ui-react";
+import { PulseLoader } from 'react-spinners';
 import API from "../helpers/API";
 import useTeams from "../hooks/useTeams";
 import useHidden from "../hooks/useHidden";
 import useSelectedTeam from "../hooks/useSelectedTeam";
 import './PokeIndex.css'
 import DisplayCard from "../components/DiplayCard";
+import useLoading from "../hooks/useLoading";
+
+
 
 const MyTeamsIndex = props => {
   const { selectedTeam, setSelectedTeam } = useSelectedTeam();
   const { teams, setTeams, removeTeam, updateStat } = useTeams();
   const { hidden, switchHidden, setHidden } = useHidden();
+  const { loading, turnOffLoading } = useLoading()
 
   useEffect(() => {
     setSelectedTeam(undefined);
-    API.getTeams().then(data => setTeams(data));
+    API.getTeams().then(data => {
+      turnOffLoading()
+      setTeams(data.teams)
+    });
   }, []);
 
   const showTeamView = id => {
@@ -30,7 +38,7 @@ const MyTeamsIndex = props => {
         <div className='icons-container'>
         {team.team_pokemons.map(tp=>
           <span className="image-icon" key={tp.id}>
-            <img src={tp.pokemon.front_sprite} alt="oh no!" />
+            <img src={tp.front_sprite} alt="oh no!" />
           </span>
         )}
         </div>
@@ -84,7 +92,7 @@ const MyTeamsIndex = props => {
           <h1 className='team-name'>{team.name}</h1>
           <Card.Group itemsPerRow={2} className='team-group'>
               {team.team_pokemons.map((poke) => (
-                  <DisplayCard key={poke.id} poke={poke} changeStat={changeStat}/>
+                  <DisplayCard key={poke.id} poke={poke} changeStat={changeStat} teamId={team.id}/>
               ))}
           </Card.Group>
         <div><Button onClick={() => deleteTeam(team.id)}>Delete this team</Button></div>
@@ -93,7 +101,26 @@ const MyTeamsIndex = props => {
     );
   };
 
-  return <div className='team-container'>{hidden ? renderTeamsHomeView() : renderTeamDisplay()}</div>;
+  const chooseRender = () => {
+    if (loading){
+      return (
+        <PulseLoader
+          sizeUnit={"px"}
+          size={50}
+          color={'#123abc'}
+          loading={loading}
+        />
+      )
+    }else{
+      return (hidden) ? renderTeamsHomeView() : renderTeamDisplay()
+    }
+  }
+
+  return (
+  <div className='team-container'>
+    { chooseRender() }
+  </div>
+  );
 };
 
 export default MyTeamsIndex;

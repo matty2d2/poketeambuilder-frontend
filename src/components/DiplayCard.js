@@ -7,12 +7,12 @@ import "./DisplayCard.css";
 import useEditType from "../hooks/useEditType";
 import API from "../helpers/API";
 
-const DisplayCard = ({ poke, changeStat }) => {
+const DisplayCard = ({ poke, changeStat, teamId }) => {
   const { flipped, toggleFlipped } = useFlipped();
   const {editType, setEditType} = useEditType()
 
   const renderSprite = poke => {
-    const { back_sprite, front_sprite } = poke.pokemon;
+    const { back_sprite, front_sprite } = poke;
     if (flipped) {
       return back_sprite
         ? back_sprite
@@ -60,7 +60,7 @@ const DisplayCard = ({ poke, changeStat }) => {
       value: val
     }
     API.updateTeamPokemon(newStatData)
-      .then(()=> changeStat(poke.team_id, poke.id, stat, val))
+      .then(()=> changeStat(teamId, poke.id, stat, val))
   }
 
   const handleSubmit = (e, stat) => {
@@ -101,7 +101,7 @@ const DisplayCard = ({ poke, changeStat }) => {
             <div className="header">{showPokeName(poke.name)}</div>
           </div>
           <div className="types-content">
-            <span className="to-center">{showTypes(poke.pokemon.types)}</span>
+            <span className="to-center">{showTypes(poke.types)}</span>
           </div>
         </div>
       </Card>

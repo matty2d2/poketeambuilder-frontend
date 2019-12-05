@@ -5,6 +5,12 @@
     width: 100%;
 }
 
+.move-card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 .moves-container{
     display: flex;
     flex-direction: column;
@@ -21,9 +27,14 @@
 }
 
 .moves-container::-webkit-scrollbar{
-width: 0;
-height: 0;
-background: rgb(255,255,255);
+    width: 0;
+    height: 0;
+    background: rgb(255,255,255);
+}
+
+.move{
+    background-color: azure !important;
+    /* background-color: #f5f0f0 !important; */
 }
 
 .pokes-container{
@@ -38,11 +49,11 @@ background: rgb(255,255,255);
 
 .chart-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-left: 1rem;
     width: 300px;
     max-width: 450px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .poke-container{
@@ -61,11 +72,13 @@ background: rgb(255,255,255);
 
 .move-card{
     width: 260px;
+    text-align: left;
 }
 
 .poke-card{
     width: 150px !important;
     margin: 5px !important;
+    background-color: azure !important; 
 }
 
 .poke-types{
@@ -89,7 +102,7 @@ background: rgb(255,255,255);
 
 .type-chart{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     /* width: 160px; */
 }
 
@@ -100,7 +113,7 @@ background: rgb(255,255,255);
 }
 
 .my-column{
-    width: 180px;
+    width: 145px;
     background-color: azure;
     border: black solid 1px;
     border-radius: 10px;

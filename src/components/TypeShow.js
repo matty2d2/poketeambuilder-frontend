@@ -111,8 +111,8 @@ const TypeShow = ({ history }) => {
           <div className="moves-container">
             {moves.map(move => (
               <div className="move-card">
-                <Card key={move.id} onClick={() => {}}>
-                  <div className="main-container">
+                <Card key={move.id} className='move'>
+                  <div className="move-card-container">
                     <div className="move-card dmg-icon">
                       <Image
                         src={require("../img/dmg-categories/" +
@@ -137,8 +137,8 @@ const TypeShow = ({ history }) => {
           <h3>Pokemon</h3>
           <div className="pokes-container">
             {pokemon.map(poke => (
-              <div className="poke-card">
-                <Card key={poke.id}>
+
+                <Card key={poke.id} className="poke-card">
                   <div className="poke-container">
                     <div className="image">
                       <img src={poke.front_sprite} alt="oh no!" />
@@ -152,7 +152,7 @@ const TypeShow = ({ history }) => {
                     </div>
                   </div>
                 </Card>
-              </div>
+
             ))}
           </div>
         </div>

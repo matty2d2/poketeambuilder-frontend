@@ -28,7 +28,23 @@ class PokemonCard extends React.Component {
     })
   }
 
-  showPokeName = (name) => name.charAt(0).toUpperCase() + name.slice(1)
+  showPokeName = (name) => {
+    const init = name.charAt(0).toUpperCase() + name.slice(1)
+
+    if (init.slice(-2) === '-m') return init.replace('-m', '♂')
+    if (init.slice(-2) === '-f') return init.replace('-f', '♀')
+    if (init.slice(-10) === '-incarnate') return init.replace('-incarnate', '')
+    if (init.slice(-8) === '-average') return init.replace('-average', '')
+    if (init.slice(-8) === '-altered') return init.replace('-altered', '')
+    if (init.slice(-9) === '-standard') return init.replace('-standard', '')
+    if (init.slice(-9) === '-ordinary') return init.replace('-ordinary', '')
+    if (init.slice(-7) === '-normal') return init.replace('-normal', '')
+    // if (init.slice(-5) === '-land') return init.replace('-land', '')
+    if (init.slice(-12) === '-red-striped') return init.replace('-red-striped', '')
+    if (init.slice(-7) === '-shield') return init.replace('-shield', '')
+    if (init.slice(-5) === '-male') return init.replace('-male', '')
+    return init
+}
 
   showTypes = (array) => {
     return array.map((type) => <div className={'type-icon' + ' ' + type.name + ' aligned'}>{type.name}</div>)

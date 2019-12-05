@@ -12,6 +12,7 @@ import useChosenTeam from '../hooks/useChosenTeam'
 import API from "../helpers/API";
 import useGenFilter from "../hooks/useGenFilter";
 import useTypeFilter from "../hooks/useTypeFilter";
+import useLoading from "../hooks/useLoading";
 
 
 const PokemonPage = () => {
@@ -20,12 +21,16 @@ const PokemonPage = () => {
   const {chosenTeam, addToTeam, removeFromTeam, resetTeam} = useChosenTeam()
   const {genFilter, setGenFilter} = useGenFilter()
   const {typeFilter, setTypeFilter} = useTypeFilter()
+  const { loading, turnOffLoading } = useLoading()
 
   useEffect(
     () => {
       if (pokemon.length === 721) return
       API.getPokemon()
-      .then(data => setPokemon(data))
+      .then(data => {
+        setPokemon(data)
+        turnOffLoading()
+      })
     },
     [pokemon]
   )
@@ -78,6 +83,7 @@ const PokemonPage = () => {
           <PokemonCollection
             pokemon={filteredPokemon}
             addToTeam={addPokeToTeam}
+            loading={loading}
           />
         </div>
       </div>
