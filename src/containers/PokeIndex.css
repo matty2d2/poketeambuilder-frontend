@@ -9,16 +9,19 @@
     width: 11rem !important;
     z-index: 50 !important;
     height: fit-content;
+    background-color: azure !important;
   }
 
   .make-button{
     margin-top: 10px;
   }
-  /* .poke-content{
-    justify-content: center;
-    text-align: center;
-    align-content: center;
-  } */
+
+  .loader{
+    position: relative;
+    left: 5%;
+    margin-top: 5%;
+    height: fit-content;
+  }
 
   .create-team-page-bot{
     /* position: sticky; */
@@ -26,7 +29,7 @@
     height: 71vh;
     overflow-y: scroll;
     top: 15%;
-
+    /* background-color: #e6e6e6; */
   }
   
   .to-right{
@@ -75,6 +78,7 @@
     min-width: 125px;
     margin: auto !important;
     color: black;
+    border: solid black 2px !important;
   }
   
   .poke-team-container{
@@ -87,6 +91,9 @@
     overflow-x: scroll;
     min-height: 150px;
     max-width: 100%;
+    background-color: #db0021 !important;
+    /* background-color: #990033 !important; */
+    /* background-color: #7a0029 !important; */
   }
   
   .selected-poke-img{
@@ -128,10 +135,11 @@
   margin: 5px !important;
   min-width: 390px !important;
   height: 90px;
+  background-color: azure !important;
 }
 
 .the-selected{
-  background-color: azure !important;
+  background-color: #cdd8cd !important;
 }
 
 .collection-scroll{

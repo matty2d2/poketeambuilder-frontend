@@ -23,6 +23,7 @@ const useTeams = () => {
             })
             return newTeam
         })
+        
         setTeams(updatedTeam)
     }
 
@@ -34,7 +35,6 @@ const useTeams = () => {
     }
 
     const updatePokemon = (pokemon, stat, val) => {
-
         let newPokeObj = {}
 
         Object.keys(pokemon).forEach( key => {
