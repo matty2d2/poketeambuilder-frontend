@@ -27,10 +27,17 @@
   }
 
   .hp{
-      float: right;
-      padding-right: 0.5rem;
-      padding-top: 0;
-      font-family: Copperplate;
+    float: right;
+    padding-right: 0.5rem;
+    padding-top: 0;
+    font-family: Copperplate;
+  }
+
+  .lvl{
+    float: right;
+    padding-right: 0.5rem;
+    padding-top: 0;
+    font-family: Copperplate;
   }
 
   .stat{
@@ -70,6 +77,11 @@
   .types-content{
     display: flex;
     justify-content: center;
+  }
+
+  .lvl:hover{
+    color: red;
+    cursor: pointer;
   }
 
   .stat:hover{

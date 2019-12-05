@@ -24,14 +24,14 @@ const ChosenPokemonCard = ({id, front_sprite, name, types, removeFromTeam}) => {
 
     return (
         <Card  
-        className='chosen-poke' 
+        className={(name)?'chosen-poke has-img':'chosen-poke no-img'} 
         color='red'
         onClick={handleDoubleClick}
         >
             <div>
                 <img className='selected-poke-img'src={useImage(front_sprite)} alt="oh no!"/>
             </div>
-            <div>{(name)? showPokeName(name): ''}</div>
+            <div>{(name)? showPokeName(name): 'No Pokemon Selected'}</div>
             <span>{(types)? showTypes(types): ''}</span>
       </Card>
         
