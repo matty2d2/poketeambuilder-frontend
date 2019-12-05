@@ -14,7 +14,6 @@ const ChosenTeam = ({ team, removeFromTeam, resetTeam, teamIds }) => {
 
     if (hidden === false){
       // const form = document.getElementById('create-team-form')
-      // debugger
       // form.submit()
       switchHidden();
     }else{

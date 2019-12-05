@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import useOffence from "../hooks/useOffence";
 import useDefence from "../hooks/useDefence";
 import { refPropType } from "@stardust-ui/react-component-ref";
+import TypeShowPokeCard from "./TypeShowPokeCard";
+
 
 const TypeShow = ({ history }) => {
   const { moves, setMoves } = useMoves();
@@ -17,6 +19,7 @@ const TypeShow = ({ history }) => {
   const { pokemon, setPokemon } = usePokemonCollection();
   const { offence, setOffence } = useOffence();
   const { defence, setDefence } = useDefence();
+  
 
   useEffect(() => {
     const selectType = history.location.state
@@ -113,6 +116,8 @@ const TypeShow = ({ history }) => {
     ));
   };
 
+  
+
   return (
     <div>
       <h1>
@@ -155,21 +160,21 @@ const TypeShow = ({ history }) => {
           <h3>Pokemon</h3>
           <div className="pokes-container">
             {pokemon.map(poke => (
+              <TypeShowPokeCard key={poke.id} poke={poke}/>
+              // <Card key={poke.id} className="poke-card">
+              //   <div className="poke-container">
+              //     <div className="poke-image">
+              //       <img src={renderSprite(poke)} alt="oh no!" />
+              //     </div>
+              //     <div className="poke-types">{showTypes(poke.types)}</div>
 
-                <Card key={poke.id} className="poke-card">
-                  <div className="poke-container">
-                    <div className="image">
-                      <img src={poke.front_sprite} alt="oh no!" />
-                    </div>
-                    <div className="poke-types">{showTypes(poke.types)}</div>
-
-                    <div>
-                      <Card.Description>
-                        {showPokeName(poke.name)}
-                      </Card.Description>
-                    </div>
-                  </div>
-                </Card>
+              //     <div>
+              //       <Card.Description>
+              //         {showPokeName(poke.name)}
+              //       </Card.Description>
+              //     </div>
+              //   </div>
+              // </Card>
 
             ))}
           </div>

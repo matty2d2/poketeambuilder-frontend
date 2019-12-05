@@ -111,7 +111,7 @@ const DisplayCard = ({ poke, changeStat, teamId }) => {
             <div className="header">
 
               
-            <div className="hp"><strong>:L6</strong></div> <br/>
+            <div className="lvl" onClick={()=>handleDoubleClick('level')}><strong>Lv:{showStatOrEdit('level')}</strong></div> <br/>
 
             <div className='hp-element' onClick={()=>handleDoubleClick('hp')}>
               <div className='hp-container'>
