@@ -90,6 +90,12 @@ const DisplayCard = ({ poke, changeStat, teamId }) => {
     return poke[stat]
   }
 
+  const progressBar = (percentage) => {
+    return (
+      <div className="health-bar-fluid" style={{width: `${percentage}%`}}></div>
+    )
+  }
+
   return (
     <>
       <Card className="display-card">
@@ -116,10 +122,12 @@ const DisplayCard = ({ poke, changeStat, teamId }) => {
             <div className='hp-element' onClick={()=>handleDoubleClick('hp')}>
               <div className='hp-container'>
                 <span className='hp-text' onClick={()=>handleDoubleClick('hp')}><strong>HP:</strong></span>
+                <div className="health-cover"></div>
                 <div className="health-bar">
                   <div className="health-bar-glass">
-                    <div className="health-bar-fluid"></div>
+                    {progressBar(showStatOrEdit('hp'))}
                   </div>
+                  
                 </div>
               </div>
               <div className="hp"><strong>{poke.hp}/ <span>{showStatOrEdit('hp')}</span></strong></div>

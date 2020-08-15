@@ -1,7 +1,7 @@
-.display-card{
-    margin: 2rem !important;
-    width: 13rem !important;
-    margin-right: 1rem !important;
+ .team-group > .ui.card.display-card {
+    margin: 2rem;
+    width: 13rem;
+    margin-right: 0.2rem ;
     /* border-radius: 15% !important; */
   }
 
@@ -13,10 +13,10 @@
     margin-left: 0.5rem !important;
   }
 
-  .progress-bar{
+  /* .progress-bar{
     padding-left: 1rem;
     padding-right: 1rem;
-  }
+  } */
   
   .team-group{
     padding-left: 5rem;

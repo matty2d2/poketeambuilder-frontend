@@ -1,72 +1,33 @@
 .health-bar
 {
     position: relative;
-    
-    display: inline-block;
-    
-    margin: 2px 2px;
-    margin-bottom: 0;
+    margin: 2px 6px -2px 2px;
     float: right;
-}
-
-.health-bar:before
-{
-    content: '';
-    
-    z-index: -1;
-    
-    position: absolute;
-    top: -6px;
-    width: 16px;
-    height: 28px;
-    
-    background-image: url('http://i.imgur.com/s0bMFR7.png');
-    background-position: -288px -2px;
-    background-repeat: none;
-}
-
-.health-bar:after
-{
-    content: '';
-    
-    z-index: -1;
-    
-    position: absolute;
-    top: -6px;
-    right: 0;
-    width: 16px;
-    height: 28px;
-    
-    background-image: url('http://i.imgur.com/s0bMFR7.png');
-    background-position: -304px -2px;
-    background-repeat: none;
 }
 
 .health-bar-glass
 {
+    position: relative;
     display: inline-block;
     width: 165px;
-    height: 16px;
+    height: 13px;
     
     z-index: 10;
-    
+    border-radius: 5px;
     border: 2px solid #000000;
     box-shadow: inset 0 0 0 2px #dbd75d;
 }
 
-.health-bar-fluid
-{
-    /* width: 100%; */
+.health-bar-fluid {
+    background: #63ff62;
     height: 100%;
-    
-    background: green;
-    
+    border-radius: inherit;
+    transition: width .4s ease-in;
     box-shadow: inset 0 3px 0 -1px #d3aa9a, 
-        inset 0 -4px 0 -2px #4d494d, 
-        inset 4px 0 0 -2px #4d494d, 
-        inset -4px 0 0 -2px #4d494d;
+    inset 0 -4px 0 -2px #4d494d, 
+    inset 4px 0 0 -2px #4d494d, 
+    inset -4px 0 0 -2px #4d494d;
 }
-
 
 .anim-width
 {
@@ -84,8 +45,6 @@
     50%  { width: 50%; }
     100% { width: 100%; }
 }
-
-
 
 
 html,
@@ -113,3 +72,4 @@ body
 {
 	box-sizing: inherit;
 }
+
