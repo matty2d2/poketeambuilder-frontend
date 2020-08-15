@@ -50,20 +50,23 @@ const PokemonCard = ({ pokemon, addToTeam }) => {
   const showTypes = (array) => {
     return array.map((type) => 
     <Link
+        key={type.id}
         to={{
           pathname: "/types",
           state: { type: type.name }
         }}
       >
-        <div className={'type-icon' + ' ' + type.name + ' aligned'}>
+        <div className={`type-icon ${type.name} aligned`}>
           {type.name}
         </div>
       </Link>
     
     )}
 
+    //
+
     return (
-      <Card className='poke-card' onClick={()=>{}}>
+      <Card className='poke-card' onMouseOver={()=>{}}>
       <div>
         <div className='team-add' onClick={() => addToTeam(pokemon.id)}>
           <div className="image">

@@ -9,7 +9,7 @@ import usePokemonCollection from "../hooks/usePokemonCollection";
 import { Link } from "react-router-dom";
 import useOffence from "../hooks/useOffence";
 import useDefence from "../hooks/useDefence";
-import { refPropType } from "@stardust-ui/react-component-ref";
+// import { refPropType } from "@stardust-ui/react-component-ref";
 import TypeShowPokeCard from "./TypeShowPokeCard";
 
 
@@ -32,7 +32,7 @@ const TypeShow = ({ history }) => {
       setTypeName(data.type.name);
       setPokemon(data.type.pokemon);
     });
-  }, [history.location.state]);
+  }, [history.location.state, setDefence, setOffence, setMoves, setTypeName, setPokemon]);
 
   const typeAgainst = effect => {
     switch (effect) {
@@ -83,33 +83,34 @@ const TypeShow = ({ history }) => {
     return d.charAt(0).toUpperCase() + d.slice(1);
   };
 
-  const showPokeName = (name) => {
-    const init = name.charAt(0).toUpperCase() + name.slice(1)
+  // const showPokeName = (name) => {
+  //   const init = name.charAt(0).toUpperCase() + name.slice(1)
 
-    if (init.slice(-2) === '-m') return init.replace('-m', '♂')
-    if (init.slice(-2) === '-f') return init.replace('-f', '♀')
-    if (init.slice(-10) === '-incarnate') return init.replace('-incarnate', '')
-    if (init.slice(-8) === '-average') return init.replace('-average', '')
-    if (init.slice(-8) === '-altered') return init.replace('-altered', '')
-    if (init.slice(-9) === '-standard') return init.replace('-standard', '')
-    if (init.slice(-9) === '-ordinary') return init.replace('-ordinary', '')
-    if (init.slice(-7) === '-normal') return init.replace('-normal', '')
-    // if (init.slice(-5) === '-land') return init.replace('-land', '')
-    if (init.slice(-12) === '-red-striped') return init.replace('-red-striped', '')
-    if (init.slice(-7) === '-shield') return init.replace('-shield', '')
-    if (init.slice(-5) === '-male') return init.replace('-male', '')
-    return init
-  }
+  //   if (init.slice(-2) === '-m') return init.replace('-m', '♂')
+  //   if (init.slice(-2) === '-f') return init.replace('-f', '♀')
+  //   if (init.slice(-10) === '-incarnate') return init.replace('-incarnate', '')
+  //   if (init.slice(-8) === '-average') return init.replace('-average', '')
+  //   if (init.slice(-8) === '-altered') return init.replace('-altered', '')
+  //   if (init.slice(-9) === '-standard') return init.replace('-standard', '')
+  //   if (init.slice(-9) === '-ordinary') return init.replace('-ordinary', '')
+  //   if (init.slice(-7) === '-normal') return init.replace('-normal', '')
+  //   // if (init.slice(-5) === '-land') return init.replace('-land', '')
+  //   if (init.slice(-12) === '-red-striped') return init.replace('-red-striped', '')
+  //   if (init.slice(-7) === '-shield') return init.replace('-shield', '')
+  //   if (init.slice(-5) === '-male') return init.replace('-male', '')
+  //   return init
+  // }
 
   const showTypes = array => {
     return array.map(type => (
       <Link
+        key={type.id}
         to={{
           pathname: "/types",
           state: { type: type.name }
         }}
       >
-        <div className={"type-icon" + " " + type.name + " space"}>
+        <div className={`type-icon ${type.name} space`}>
           {type.name}
         </div>
       </Link>
@@ -121,7 +122,7 @@ const TypeShow = ({ history }) => {
   return (
     <div>
       <h1>
-        <div className={"large-type-icon" + " " + typeName}>
+        <div className={`large-type-icon ${typeName}`}>
           {" "}
           <b>{typeName}</b>
         </div>{" "}
@@ -133,7 +134,7 @@ const TypeShow = ({ history }) => {
           <h3>Moves</h3>
           <div className="moves-container">
             {moves.map(move => (
-              <div className="move-card">
+              <div key={move.name} className="move-card">
                 <Card key={move.id} className='move'>
                   <div className="move-card-container">
                     <div className="move-card dmg-icon">
@@ -160,7 +161,7 @@ const TypeShow = ({ history }) => {
           <h3>Pokemon</h3>
           <div className="pokes-container">
             {pokemon.map(poke => (
-              <TypeShowPokeCard key={poke.id} poke={poke}/>
+              <TypeShowPokeCard key={poke.name} poke={poke}/>
               // <Card key={poke.id} className="poke-card">
               //   <div className="poke-container">
               //     <div className="poke-image">

@@ -23,7 +23,9 @@ const MyTeamsIndex = props => {
       turnOffLoading()
       setTeams(data.teams)
     });
-  }, []);
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  []);
 
   const showTeamView = id => {
     setSelectedTeam(id);

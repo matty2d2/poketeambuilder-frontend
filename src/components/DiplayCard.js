@@ -33,7 +33,7 @@ const DisplayCard = ({ poke, changeStat, teamId }) => {
           }}
           key={type.name}
         >
-          <div className={"type-icon" + " " + type.name + ' space'}>{type.name}</div>
+          <div className={`type-icon ${type.name} space`}>{type.name}</div>
         </Link>
     ));
   };

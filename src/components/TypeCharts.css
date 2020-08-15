@@ -18,6 +18,10 @@
     justify-content: center; */
 }
 
+.chart-container{
+    margin-bottom: 20px;
+}
+
 .chart-info{
     float: left;
     padding-top: 10px;

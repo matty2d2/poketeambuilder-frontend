@@ -5,11 +5,12 @@ import '../Types.css'
 import useFlipped from "../hooks/useFlipped";
 
 const TypeShowPokeCard = ({ poke }) => {
+
     const { flipped, toggleFlipped } = useFlipped();
 
     const showPokeName = (name) => {
-        const init = name.charAt(0).toUpperCase() + name.slice(1)
 
+        const init = name.charAt(0).toUpperCase() + name.slice(1)
         if (init.slice(-2) === '-m') return init.replace('-m', '♂')
         if (init.slice(-2) === '-f') return init.replace('-f', '♀')
         if (init.slice(-10) === '-incarnate') return init.replace('-incarnate', '')
@@ -28,12 +29,13 @@ const TypeShowPokeCard = ({ poke }) => {
   const showTypes = array => {
     return array.map(type => (
       <Link
+        key={type.name}
         to={{
           pathname: "/types",
           state: { type: type.name }
         }}
       >
-        <div className={"type-icon" + " " + type.name + " space"}>
+        <div className={`type-icon ${type.name} space`}>
           {type.name}
         </div>
       </Link>

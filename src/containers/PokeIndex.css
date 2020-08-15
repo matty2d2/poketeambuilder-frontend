@@ -12,6 +12,17 @@
     background-color: azure !important;
   }
 
+  .poke-card:hover {
+    cursor: pointer;
+    z-index: 5;
+    background: #fff;
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 #bcbdbd, 0 0 0 1px #d4d4d5;
+    box-shadow: 0 1px 3px 0 #bcbdbd, 0 0 0 1px #d4d4d5;
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
   .make-button{
     margin-top: 10px;
   }

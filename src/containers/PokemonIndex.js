@@ -32,7 +32,8 @@ const PokemonPage = () => {
         turnOffLoading()
       })
     },
-    [pokemon]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   )
   
   const addPokeToTeam = (id) => addToTeam(id)

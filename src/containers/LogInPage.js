@@ -9,7 +9,7 @@ const LogInPage = (props) => {
     () => {
       if (localStorage.getItem('token')) props.history.push('/create-team')
     },
-    []
+    [props.history]
   )
 
   return (
