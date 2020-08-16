@@ -36,19 +36,19 @@ const TypeShow = ({ history }) => {
 
   const typeAgainst = effect => {
     switch (effect) {
-      case "super effective":
+      case 2:
         const array = offence.filter(
           item => item.damage_relation.effectiveness === effect
         );
         return array.map(i => i.defence_type);
-      case "not very effective":
+      case 0.5:
         const array2 = offence.filter(
           item => item.damage_relation.effectiveness === effect
         );
         return array2.map(i => i.defence_type);
       default:
         const array3 = offence.filter(
-          item => item.damage_relation.effectiveness === "immune"
+          item => item.damage_relation.effectiveness === 0
         );
         return array3.map(i => i.defence_type);
     }
@@ -56,19 +56,19 @@ const TypeShow = ({ history }) => {
 
   const typeRecieve = effect => {
     switch (effect) {
-      case "super effective":
+      case 2:
         const array = defence.filter(
           item => item.damage_relation.effectiveness === effect
         );
         return array.map(i => i.attack_type);
-      case "not very effective":
+      case 0.5:
         const array2 = defence.filter(
           item => item.damage_relation.effectiveness === effect
         );
         return array2.map(i => i.attack_type);
       default:
         const array3 = defence.filter(
-          item => item.damage_relation.effectiveness === "immune"
+          item => item.damage_relation.effectiveness === 0
         );
         return array3.map(i => i.attack_type);
     }
@@ -104,7 +104,7 @@ const TypeShow = ({ history }) => {
   const showTypes = array => {
     return array.map(type => (
       <Link
-        key={type.id}
+        key={type.name}
         to={{
           pathname: "/types",
           state: { type: type.name }
@@ -202,7 +202,7 @@ const TypeShow = ({ history }) => {
                       <p>2x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeAgainst("super effective"))}
+                      {showTypes(typeAgainst(2))}
                     </div>
                   </div>
                   <div className="type-comparison-div">
@@ -210,7 +210,7 @@ const TypeShow = ({ history }) => {
                       <p>½x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeAgainst("not very effective"))}
+                      {showTypes(typeAgainst(0.5))}
                     </div>
                   </div>
                   <div className="type-comparison-div">
@@ -218,7 +218,7 @@ const TypeShow = ({ history }) => {
                       <p>0x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeAgainst("immune"))}
+                      {showTypes(typeAgainst(0))}
                     </div>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const TypeShow = ({ history }) => {
                       <p>½x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeRecieve("not very effective"))}
+                      {showTypes(typeRecieve(0.5))}
                     </div>
                   </div>
                   <div className="type-comparison-div">
@@ -248,7 +248,7 @@ const TypeShow = ({ history }) => {
                       <p>2x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeRecieve("super effective"))}
+                      {showTypes(typeRecieve(2))}
                     </div>
                   </div>
                   <div className="type-comparison-div">
@@ -256,7 +256,7 @@ const TypeShow = ({ history }) => {
                       <p>0x</p>
                     </div>
                     <div className="power-atr">
-                      {showTypes(typeRecieve("immune"))}
+                      {showTypes(typeRecieve(0))}
                     </div>
                   </div>
                 </div>

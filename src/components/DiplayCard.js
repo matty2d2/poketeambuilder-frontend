@@ -91,8 +91,12 @@ const DisplayCard = ({ poke, changeStat, teamId }) => {
   }
 
   const progressBar = (percentage) => {
+    let color = 'green';
+    if (percentage < 60) {color = 'yellow'}
+    if (percentage < 30) {color = 'red'}
+
     return (
-      <div className="health-bar-fluid" style={{width: `${percentage}%`}}></div>
+      <div className={`health-bar-fluid ${color}-bar`} style={{width: `${percentage}%`}}></div>
     )
   }
 

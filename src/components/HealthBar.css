@@ -29,6 +29,18 @@
     inset -4px 0 0 -2px #4d494d;
 }
 
+.health-bar-fluid.green-bar {
+    background: #63ff62;
+}
+
+.health-bar-fluid.yellow-bar {
+    background: #ffff00;
+}
+
+.health-bar-fluid.red-bar {
+    background: #ff0000;
+}
+
 .anim-width
 {
     -webkit-animation:  anim50to100 2s infinite;
