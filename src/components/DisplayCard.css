@@ -64,9 +64,18 @@
     font-family: Copperplate;
   }
 
+  strong form {
+    display: inline-block;
+  }
+
   .stat-input{
-    height: 20px;
-    width: 35px;
+    height: 17px;
+    width: 30px;
+    border: none;
+    outline: none;
+    font-family: Copperplate;
+    font-weight: bolder;
+    color: red;
   }
 
   .space{
@@ -89,10 +98,21 @@
     cursor: pointer;
   }
 
-  .hp-element:hover{
+  .hp-text:hover~.max-hp,.hp-text:hover{
     color: red;
     cursor: pointer;
   }
+
+  .health-bar:hover~.current-hp, .health-bar{
+    color: red;
+    cursor: pointer;
+  }
+
+  .max-hp:hover + .hp-text{
+    color: red;
+    cursor: pointer;
+    background-color: yellow;
+  }  
 
   .sprite{
     cursor: alias;
